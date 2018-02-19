@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F24E070203A6088000CC761 /* ConvertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F24E06F203A6088000CC761 /* ConvertTableViewCell.swift */; };
+		8F24E074203A6C1A000CC761 /* ConvertTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F24E073203A6C1A000CC761 /* ConvertTableViewController.swift */; };
+		8F24E076203A76AA000CC761 /* Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F24E075203A76AA000CC761 /* Conversion.swift */; };
 		8FCEE12F201AD2BC00E7BC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCEE12E201AD2BC00E7BC23 /* AppDelegate.swift */; };
 		8FCEE131201AD2BC00E7BC23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCEE130201AD2BC00E7BC23 /* ViewController.swift */; };
 		8FCEE134201AD2BC00E7BC23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FCEE132201AD2BC00E7BC23 /* Main.storyboard */; };
@@ -34,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F24E06F203A6088000CC761 /* ConvertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertTableViewCell.swift; sourceTree = "<group>"; };
+		8F24E073203A6C1A000CC761 /* ConvertTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertTableViewController.swift; sourceTree = "<group>"; };
+		8F24E075203A76AA000CC761 /* Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversion.swift; sourceTree = "<group>"; };
 		8FCEE12B201AD2BC00E7BC23 /* TemperatureConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TemperatureConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FCEE12E201AD2BC00E7BC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8FCEE130201AD2BC00E7BC23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +105,9 @@
 			children = (
 				8FCEE12E201AD2BC00E7BC23 /* AppDelegate.swift */,
 				8FCEE130201AD2BC00E7BC23 /* ViewController.swift */,
+				8F24E06F203A6088000CC761 /* ConvertTableViewCell.swift */,
+				8F24E073203A6C1A000CC761 /* ConvertTableViewController.swift */,
+				8F24E075203A76AA000CC761 /* Conversion.swift */,
 				8FCEE132201AD2BC00E7BC23 /* Main.storyboard */,
 				8FCEE135201AD2BC00E7BC23 /* Assets.xcassets */,
 				8FCEE137201AD2BC00E7BC23 /* LaunchScreen.storyboard */,
@@ -259,8 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F24E076203A76AA000CC761 /* Conversion.swift in Sources */,
 				8FCEE131201AD2BC00E7BC23 /* ViewController.swift in Sources */,
+				8F24E070203A6088000CC761 /* ConvertTableViewCell.swift in Sources */,
 				8FCEE12F201AD2BC00E7BC23 /* AppDelegate.swift in Sources */,
+				8F24E074203A6C1A000CC761 /* ConvertTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +517,7 @@
 				8FCEE155201AD2BC00E7BC23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8FCEE156201AD2BC00E7BC23 /* Build configuration list for PBXNativeTarget "TemperatureConverterTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +526,7 @@
 				8FCEE158201AD2BC00E7BC23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8FCEE159201AD2BC00E7BC23 /* Build configuration list for PBXNativeTarget "TemperatureConverterUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +535,7 @@
 				8FCEE15B201AD2BC00E7BC23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
