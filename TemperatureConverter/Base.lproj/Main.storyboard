@@ -110,6 +110,8 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="buttonA" destination="url-wq-0SA" id="vNt-7Q-3MG"/>
+                        <outlet property="buttonB" destination="VqR-7d-RsO" id="eFg-5N-z5z"/>
                         <outlet property="nameLabel" destination="huL-WF-v4u" id="uLO-8i-icK"/>
                         <outlet property="tempField" destination="NhO-5j-o9T" id="hev-FG-HkE"/>
                         <outlet property="tempResult" destination="eSh-Ac-I2b" id="aZ0-zw-xSo"/>
