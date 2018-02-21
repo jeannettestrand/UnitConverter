@@ -8,6 +8,7 @@
 
 import UIKit
 
+// 
 class ConvertTableViewController: UITableViewController {
 
     //MARK: Properties
@@ -34,38 +35,54 @@ class ConvertTableViewController: UITableViewController {
 
     // Tells the table view how many rows to Create
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return converisons.count
+        return conversions.count
     }
     
     // Configures and provides a cell to display for a given row
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         // Requests a cell from the table view
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ConvertTableViewCell else {
             fatalError("Selected cell is not of type \(cellIdentifier)")
         }
         //fetches the appropriate conversion for data source layout
         let conversion = conversions[indexPath.row]
-        cell.nameLabel.text = conversion.name
+        cell.nameLabel.text = conversion.nameLabel
         return cell
     }
-    // MARK: Private Methods
     
+    // MARK: Private Methods
+    // Instantiate default sample conversion data for application
+    // class init signature : nameLabel: String, buttonLabelA: String, buttonLabelB: String, closureA : (Double) -> Double, closureB: (Double) -> Double
     private func loadSampleConversions() {
-        guard let area = Conversion(name: "Area", unit1Name: "ac", unit1: 1.0, unit2Name: "ha", unit2: 0.405) else {
-            fatalError("Unable to instantiate Area")
-        }
-        guard let length = Conversion(name: "Length", unit1Name: "'", unit1: 1.0,  unit2Name: "m", unit2: 0.305) else {
-            fatalError("Unable to instantiate Length")
-        }
-        guard let weight = Conversion(name: "Weight",  unit1Name: "lbs", unit1: 1.0, unit2Name: "kg", unit2: 0.454) else {
-            fatalError("Unable to instantiate Weight")
-        }
-        //guard let temperature = Conversion(name: "Temperature", unit1: 1.0, unit2: 0.305) else {
-        //    fatalError("Unable to instantiate Temperature")
-        //}
+        guard let area = Conversion(nameLabel: "Area Converter",
+                                    buttonLabelA: "acres > ha",
+                                    buttonLabelB: "ha > acres",
+                                    closureA: {(value: Double) -> Double in return value * 2.47105},
+                                    closureB: {(value: Double) -> Double in return value * 0.404686}
+            ) else { fatalError("Unable to instantiate Area") }
+            
+        guard let length = Conversion(nameLabel: "Length Converter",
+                                      buttonLabelA: "metre > feet",
+                                      buttonLabelB: "feet > metre",
+                                      closureA: {(value: Double) -> Double in return value * 3.28084},
+                                      closureB: {(value: Double) -> Double in return value * 0.305}
+            ) else { fatalError("Unable to instantiate Length")}
         
-        conversions += [area, length, weight]
+        guard let weight = Conversion(nameLabel: "Weight Converter",
+                                      buttonLabelA: "lbs > kg",
+                                      buttonLabelB: "kg > lbs",
+                                      closureA: {(value: Double) -> Double in return value * 0.453592},
+                                      closureB: {(value: Double) -> Double in return value * 2.20462}
+            ) else { fatalError("Unable to instantiate Weight") }
+        
+        guard let temperature = Conversion(nameLabel: "Temperature Converter",
+                                            buttonLabelA: "celcius > farenheit",
+                                            buttonLabelB: "farenheit > celcius",
+                                            closureA: {(value: Double) -> Double in return (value * 1.8 + 32)},
+                                            closureB: {(value: Double) -> Double in return (value - 32.0) * 5.0 / 9.0}
+            ) else { fatalError("Unable to instantiate Temperature") }
+        
+        conversions += [area, length, weight, temperature]
     }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

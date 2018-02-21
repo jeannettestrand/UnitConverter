@@ -16,23 +16,18 @@ import os
 //}
 
 class Conversion {
-    var name: String
-    var unit1Name: String
-    var unit1: Double
-    var unit2Name: String
-    var unit2: Double
-    
+    var nameLabel: String
+    var buttonLabelA: String
+    var buttonLabelB: String
+    var closureA: (Double) -> Double
+    var closureB: (Double) -> Double
     
     //MARK : Initialization
-    
-    init?(name:String, unit1Name: String, unit1: Double, unit2Name: String, unit2: Double) {
-        if name.isEmpty || unit1 < 0 || unit2 < 0 {
-            return nil
-        }
-        self.name = name
-        self.unit1Name = unit1Name
-        self.unit1 = unit1
-        self.unit2Name = unit2Name
-        self.unit2 = unit2
+    init?(nameLabel: String, buttonLabelA: String, buttonLabelB: String, closureA : @escaping (Double) -> Double, closureB: @escaping (Double) -> Double) {
+        self.nameLabel = nameLabel
+        self.buttonLabelA = buttonLabelA
+        self.buttonLabelB = buttonLabelB
+        self.closureA = closureA
+        self.closureB = closureB
     }
 }
