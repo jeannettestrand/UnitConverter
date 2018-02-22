@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  TemperatureConverter
+//  Manages view controller drawing, management, button pressing, navigation back to tabl view.
 //
 //  Created by Jeannette on 2018-01-25.
 //  Copyright © 2018 Jeannette. All rights reserved.
@@ -9,11 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
-    // MARK: Properties
     
+    // MARK: Properties
     @IBOutlet weak var valField: UITextField!
     @IBOutlet weak var valResult: UITextField!
-   
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var buttonA: UIButton!
     @IBOutlet weak var buttonB: UIButton!
@@ -21,42 +20,70 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     // Mark: Methods
-    // Button A invokes the closureA to convert units
-    @IBAction func buttonA(_ sender: UIButton) {
-        let value = Double(self.valField.text!)
-        self.valResult.text = ((value) != nil) ? String(item!.closureA(value!)) : "N/A"
-    }
-    // Button B invokes the closureB to convert units
-    @IBAction func buttonB(_ sender: UIButton) {
-        let value = Double(self.valField.text!)
-        self.valResult.text = ((value) != nil) ? String(item!.closureB(value!)) : "N/A"
+    // Invokes closureA to convert units
+    @IBAction func butonAAction(_ sender: UIButton) {
+        var result = "Invalid Entry"
+        if let value = Double(self.valField.text!) {
+            if (value < 0.0 && nameLabel.text != "Temperature Converter") {
+                result = "Value must be positive"
+            } else {
+                result = String(item!.closureA(value))
+            }
+        }
+        self.valResult.text = result
     }
     
-    // MARK: Delegate Methods
+    // Invokes closureB to convert units
+    @IBAction func buttonBAction(_ sender: UIButton) {
+        var result = "Invalid Entry"
+        if let value = Double(self.valField.text!) {
+            if (value < 0.0 && nameLabel.text != "Temperature Converter") {
+                result = "Value must be positive"
+            } else {
+                result = String(item!.closureB(value))
+            }
+        }
+        self.valResult.text = result
+    }
+    
+    // Handles view initialization
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+        // Retrieves data passed from table view controller
         if let item = item {
             self.valField.delegate = self
             nameLabel.text = item.nameLabel
             buttonA.setTitle(item.buttonLabelA, for: UIControlState.normal)
             buttonB.setTitle(item.buttonLabelB, for: UIControlState.normal)
         } else {
-            nameLabel.text = "Error"
-            buttonA.setTitle("N/A", for: UIControlState.normal)
-            buttonB.setTitle("N/A", for: UIControlState.normal)
+            // error state, will display error messages in view controller
+            self.valField.delegate = self
+            nameLabel.text = "error"
+            buttonA.setTitle("error", for: UIControlState.normal)
+            buttonB.setTitle("error", for: UIControlState.normal)
         }
     }
     
+    // Handles back button actions
+    @IBAction func cancel(_ sender: Any) {
+        if presentingViewController is UINavigationController {
+            // Add
+            dismiss(animated: true, completion: nil)
+        } else if let owningNavigationController = navigationController {
+            // Edit
+            owningNavigationController.popViewController(animated: true)
+        }
+    }
+    
+    // Clear text field when it receives focus
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.valField.resignFirstResponder()
         return true
     }
     
+    // Handles memory issues
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
   

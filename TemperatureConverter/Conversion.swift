@@ -1,6 +1,6 @@
 //
 //  conversions.swift
-//  TemperatureConverter
+//  Template for Conversion objects for app data.
 //
 //  Created by Jeannette on 2018-02-18.
 //  Copyright © 2018 Jeannette. All rights reserved.
@@ -9,12 +9,6 @@
 import UIKit
 import os
 
-//class PropertyKey {
-//    static let name = "name"
-//    static let unit1 = "unit1"
-//    static let unit2 = "unit2"
-//}
-
 class Conversion {
     var nameLabel: String
     var buttonLabelA: String
@@ -22,7 +16,7 @@ class Conversion {
     var closureA: (Double) -> Double
     var closureB: (Double) -> Double
     
-    //MARK : Initialization
+    //MARK : Initialization of class parameters
     init?(nameLabel: String, buttonLabelA: String, buttonLabelB: String, closureA : @escaping (Double) -> Double, closureB: @escaping (Double) -> Double) {
         self.nameLabel = nameLabel
         self.buttonLabelA = buttonLabelA
