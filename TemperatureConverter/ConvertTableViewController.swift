@@ -85,28 +85,28 @@ class ConvertTableViewController: UITableViewController {
         guard let area = Conversion(nameLabel: "Area Converter",
                                     buttonLabelA: " ha > ac ",
                                     buttonLabelB: " ac > ha ",
-                                    closureA: {(value: Double) -> Double in return value * 2.47105},
-                                    closureB: {(value: Double) -> Double in return value * 0.404686}
+                                    closureA: {(value: Double) -> Double? in return value < 0 ? nil : value * 2.47105},
+                                    closureB: {(value: Double) -> Double? in return value < 0 ? nil : value * 0.404686}
             ) else { fatalError("Unable to instantiate Area") }
             
         guard let length = Conversion(nameLabel: "Length Converter",
                                       buttonLabelA: " m > ' ",
                                       buttonLabelB: " ' > m ",
-                                      closureA: {(value: Double) -> Double in return value * 3.28084},
-                                      closureB: {(value: Double) -> Double in return value * 0.305}
+                                      closureA: {(value: Double) -> Double? in return value < 0 ? nil : value * 3.28084},
+                                      closureB: {(value: Double) -> Double? in return value < 0 ? nil : value * 0.305}
             ) else { fatalError("Unable to instantiate Length")}
         
         guard let weight = Conversion(nameLabel: "Weight Converter",
                                       buttonLabelA: " lbs > kg ",
                                       buttonLabelB: " kg > lbs ",
-                                      closureA: {(value: Double) -> Double in return value * 0.453592},
-                                      closureB: {(value: Double) -> Double in return value * 2.20462}
+                                      closureA: {(value: Double) -> Double? in return value < 0 ? nil : value * 0.453592},
+                                      closureB: {(value: Double) -> Double? in return value < 0 ? nil : value * 2.20462}
             ) else { fatalError("Unable to instantiate Weight") }
         
         guard let temperature = Conversion(nameLabel: "Temperature Converter",
                                             buttonLabelA: " °C > F ",
                                             buttonLabelB: " F > °C ",
-                                            closureA: {(value: Double) -> Double in return (value * 1.8 + 32)},
+                                            closureA: {(value: Double) -> Double in return value * 1.8 + 32},
                                             closureB: {(value: Double) -> Double in return (value - 32.0) * 5.0 / 9.0}
             ) else { fatalError("Unable to instantiate Temperature") }
         

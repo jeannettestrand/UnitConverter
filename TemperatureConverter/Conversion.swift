@@ -13,11 +13,11 @@ class Conversion {
     var nameLabel: String
     var buttonLabelA: String
     var buttonLabelB: String
-    var closureA: (Double) -> Double
-    var closureB: (Double) -> Double
+    var closureA: (Double) -> Double?
+    var closureB: (Double) -> Double?
     
     //MARK : Initialization of class parameters
-    init?(nameLabel: String, buttonLabelA: String, buttonLabelB: String, closureA : @escaping (Double) -> Double, closureB: @escaping (Double) -> Double) {
+    init?(nameLabel: String, buttonLabelA: String, buttonLabelB: String, closureA : @escaping (Double) -> Double?, closureB: @escaping (Double) -> Double?) {
         self.nameLabel = nameLabel
         self.buttonLabelA = buttonLabelA
         self.buttonLabelB = buttonLabelB

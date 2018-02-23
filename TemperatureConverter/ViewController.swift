@@ -22,45 +22,39 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // Mark: Methods
     // Invokes closureA to convert units
     @IBAction func butonAAction(_ sender: UIButton) {
-        var result = "Invalid Entry"
+        var display = "N/A"
         if let value = Double(self.valField.text!) {
-            if (value < 0.0 && nameLabel.text != "Temperature Converter") {
-                result = "Value must be positive"
-            } else {
-                result = String(item!.closureA(value))
+            if let result = item!.closureA(value) {
+                display = String(result)
             }
         }
-        self.valResult.text = result
+        self.valResult.text = display
     }
     
     // Invokes closureB to convert units
     @IBAction func buttonBAction(_ sender: UIButton) {
-        var result = "Invalid Entry"
+        var display = "N/A"
         if let value = Double(self.valField.text!) {
-            if (value < 0.0 && nameLabel.text != "Temperature Converter") {
-                result = "Value must be positive"
-            } else {
-                result = String(item!.closureB(value))
+            if let result = item!.closureB(value) {
+                display = String(result)
             }
         }
-        self.valResult.text = result
+        self.valResult.text = display
     }
     
     // Handles view initialization
     override func viewDidLoad() {
         super.viewDidLoad()
         // Retrieves data passed from table view controller
+        
+        // Initializes data for the view controller, if error encountered fatalError message sent
         if let item = item {
             self.valField.delegate = self
             nameLabel.text = item.nameLabel
             buttonA.setTitle(item.buttonLabelA, for: UIControlState.normal)
             buttonB.setTitle(item.buttonLabelB, for: UIControlState.normal)
         } else {
-            // error state, will display error messages in view controller
-            self.valField.delegate = self
-            nameLabel.text = "error"
-            buttonA.setTitle("error", for: UIControlState.normal)
-            buttonB.setTitle("error", for: UIControlState.normal)
+            fatalError("Unable to open view controller")
         }
     }
     
