@@ -52,6 +52,7 @@ class ConvertTableViewController: UITableViewController {
     }
     
     // Creates data item to pass to View Controller for display
+    // If error encountered fatalError message sent
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         super.prepare(for: segue, sender: sender)
         if segue.identifier == "ShowDetail" {
@@ -109,7 +110,7 @@ class ConvertTableViewController: UITableViewController {
                                             closureA: {(value: Double) -> Double in return value * 1.8 + 32},
                                             closureB: {(value: Double) -> Double in return (value - 32.0) * 5.0 / 9.0}
             ) else { fatalError("Unable to instantiate Temperature") }
-        
+        // Add Conversion objects to items array for cell population
         items += [area, length, weight, temperature]
     }
 }
